@@ -61,7 +61,7 @@ for x in custom_xticks:
 plt.axhline(y=100, color='grey', linestyle='--', linewidth=0.6)
 plt.axhline(y=0, color='grey', linestyle='--', linewidth=0.6)
 
-plt.plot(df['pc_flip_bit'], df['miss_rate'], linestyle='-', color='green')
+plt.plot(df['pc_flip_bit'].to_numpy(), df['miss_rate'].to_numpy(), linestyle='-', color='green')
 plt.gca().get_yaxis().get_label().set_position((0, 0.3))
 
 fig_file_path='fig_pc_input.pdf'

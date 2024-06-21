@@ -83,7 +83,7 @@ plt.plot([-5, 70], [data_point[0], data_point[0]], color='red', linestyle='--', 
 plt.plot([-5, 134], [data_point[1], data_point[1]], color='red', linestyle='--', linewidth=1)
 plt.plot([-5, 390], [data_point[2], data_point[2]], color='red', linestyle='--', linewidth=1)
 
-plt.plot(df['phr_flip_bit'], df['associativity'], linestyle='-', color='green')
+plt.plot(df['phr_flip_bit'].to_numpy(), df['associativity'].to_numpy(), linestyle='-', color='green')
 plt.gca().get_yaxis().get_label().set_position((0, 0.3))
 # plt.show()
 fig_file_path='fig_associativity_complete.pdf'

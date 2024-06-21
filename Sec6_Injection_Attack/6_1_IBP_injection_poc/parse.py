@@ -9,7 +9,7 @@ def clean_df(df):
     df = df.replace('\n',-1)
     return df
 
-data = pd.read_csv("results.out", delim_whitespace=True)
+data = pd.read_csv("results.out", sep='\s+')
 data = clean_df(data)
 data["Clock"] = pd.to_numeric(data["Clock"],errors='coerce')
 data["L2_Miss"] = pd.to_numeric(data["L2_Miss"],errors='coerce')

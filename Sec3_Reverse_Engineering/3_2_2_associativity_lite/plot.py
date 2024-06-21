@@ -62,7 +62,7 @@ plt.plot([6, 6], [-10, df['miss_rate'][5]], color='red', linestyle='--', linewid
 plt.plot([7, 7], [-10, df['miss_rate'][6]], color='red', linestyle='--', linewidth=1)
 plt.axhline(y=0, color='grey', linestyle='--', linewidth=0.6)
 
-plt.plot(df['num_ibranch'], df['miss_rate'], linestyle='-', color='green')
+plt.plot(df['num_ibranch'].to_numpy(), df['miss_rate'].to_numpy(), linestyle='-', color='green')
 plt.gca().get_yaxis().get_label().set_position((0, 0.3))
 
 fig_file_path='fig_associativity_lite.pdf'

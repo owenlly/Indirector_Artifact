@@ -89,7 +89,7 @@ now="$(date)"
 echo "Running in mode: $mode"
 
 PMC_DIR=../../utils/src_pmc
-repeat0_input=15
+repeat0_input=5
 (cd $PMC_DIR && . vars.sh)
 g++ -O2 -c -m64 -oa64.o $PMC_DIR/PMCTestA.cpp
 
