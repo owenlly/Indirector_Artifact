@@ -1,0 +1,90 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: $0 mode=run/compile [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]"
+}
+
+if [ "$#" -lt 1 ]; then
+    usage
+    exit 1
+fi
+
+#default value
+mode="run"
+core_id=0
+perf_cts=205,206
+begin_set=0
+end_set=511
+
+for arg in "$@"; do
+    key=$(echo $arg | cut -f1 -d=)
+    value=$(echo $arg | cut -f2 -d=)
+    case $key in
+        mode)
+            if [[ "$value" == "run" || "$value" == "compile" ]]; then
+                mode=$value
+            else
+                echo "Error: mode must be one of 'run' or 'compile'."
+                usage
+                exit 1
+            fi
+            ;;
+        begin_set)
+            begin_set=$value
+            ;;
+        end_set)
+            end_set=$value
+            ;;
+        core_id)
+            core_id=$value
+            ;;
+        perf_cts)
+            perf_cts=$value
+            ;;
+        output_file)
+            output_file=$value
+            ;;
+        *)
+            echo "Warning: Ignoring unrecognized option '$key'."
+            ;;
+    esac
+done
+
+PMC_DIR=../../utils/src_pmc
+repeat0_input=10
+output_file=results.out
+(cd $PMC_DIR && . vars.sh)
+g++ -O2 -c -m64 -oa64_index_locator.o $PMC_DIR/PMCTestA_poc.cpp
+
+if [[ "$mode" == "run" ]]; then
+    echo "Performing run mode operations..." 
+    echo -e "\n@   repeat0: $repeat0_input" > $output_file
+    echo -e "\n@@   Clock     BrIndir     BrMispInd" >> $output_file
+    for (( i=$begin_set; i<=$end_set; ++i ))
+    do  
+        echo -e "@@@-------IBP set #$i-------\n" >> $output_file
+        taskset -c $core_id ./x_files/x_index_locator_$i >> $output_file
+    done
+    python3 parse.py
+elif [[ "$mode" == "compile" ]]; then
+    mkdir -p ./x_files
+    python3 PHR_maker.py victim PHR0 184
+    python3 PHR_maker.py victim PHR1 384
+    for (( i=$begin_set; i<=$end_set; ++i ))
+    do  
+        echo -e "compiling scanning for IBP set #$i..."
+        if [[ $i == 0 ]]; then  
+            python3 PHR_maker.py attacker PHR0 1
+        else
+            python3 PHR_maker.py attacker PHR0 0
+        fi
+        python3 PHR_maker.py attacker PHR1 $i
+        nasm -f elf64 -o b64_index_locator.o -i$PMC_DIR \
+            -Dcounters=$perf_cts \
+            -Drepeat0_input=$repeat0_input \
+            -Pindex_locator_poc.nasm \
+            $PMC_DIR/TemplateB64.nasm
+        g++ -no-pie -flto -m64 a64_index_locator.o b64_index_locator.o \
+            -o ./x_files/x_index_locator_$i -lpthread -lrt
+    done
+fi
