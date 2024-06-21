@@ -67,7 +67,7 @@ secret=5
 pc_31to24=0
 pc_23to15=0
 pc_14to12=0
-pc_11_to_5=100
+pc_11to5=100
 
 g++ -O2 -c -m64 -oa.o $PMC_DIR/PMCTestA_poc.cpp
 if [[ "$mode" == "run" ]]; then
