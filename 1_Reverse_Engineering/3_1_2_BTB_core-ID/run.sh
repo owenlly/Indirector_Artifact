@@ -78,11 +78,9 @@ else
 fi
 
 now="$(date)"
-echo "Experiment date and time: $now" > $output_file
-echo "Basic options - t0_branch_num: $t0_branch_num, perf_cts: $perf_cts, output_file: $output_file" >> $output_file
-
 echo "Running in mode: $mode"
-echo "Basic options - t0_branch_num: $t0_branch_num, perf_cts: $perf_cts, output_file: $output_file"
+echo "Experiment date and time: $now" > $output_file
+echo "Basic options - t0_branch_num: $t0_branch_num, perf_cts: $perf_cts, output_file: $output_file" | tee -a $output_file
 
 sec_branch_0_t0_addr=0x100000000
 sec_branch_1_t0_addr=0x200000000
