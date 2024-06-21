@@ -1,5 +1,5 @@
 # Run Cross-process Injection Attacks
-* Go to the attack directories: `cd ./6_1_IBP_injection_poc` (or `6_2_BTB_injection_poc`).
+* Go to the attack directories: `6_1_IBP_injection_poc` (or `6_2_BTB_injection_poc`).
 * Execute the command: `make`.
 * Follow the instructions to assign the core ID for both attacker and victim processes.
 * A success example when both processes run on the same SMT core:
