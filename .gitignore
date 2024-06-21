@@ -15,7 +15,7 @@
 *.tsv
 *.ld
 *.pdf
-x_*
+x*
 cpugetinfo
 countertypes.inc
 scan_all
