@@ -1,6 +1,6 @@
 # BTB Hit + IBP Hit/Miss in IBP
 
-To reproduce results of Section 3.3 in the paper:
+To reproduce results of Section 3.3 (Table 2) in the paper:
 ```
 Usage: ./run.sh mode=run/asm evict_ibp=true/false [core_id=VALUE] [perf_cts=VALUE]
 ```
