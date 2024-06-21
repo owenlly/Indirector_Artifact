@@ -17,6 +17,7 @@ Branch misprediction rate of t0 test branches: 0.08%
     ./run.sh mode=run t0_branch_num=11 core_assign=same
     ```
     **Expected output:** ~0% misprediction on t0 test branches
+  
     There are 11 available ways in the BTB set. Two aliased branches share the BTB entry.
 
 
@@ -30,4 +31,5 @@ Branch misprediction rate of t0 test branches: 0.08%
     ./run.sh mode=run t0_branch_num=11 core_assign=cross
     ```
     **Expected output:** >10% misprediction on t0 test branches
+  
     There are 10 available ways in the BTB set. Two aliased branches use separate BTB entries within the same set.
