@@ -6,4 +6,4 @@ ROOT_DIR=$(pwd)
 
 (cd "$ROOT_DIR/utils/src_pmc" && ./init64.sh)
 
-(cd "$ROOT_DIR/utils/script_setup" && ./set_performance.sh performance && ./set_prefetcher.sh off)
+(cd "$ROOT_DIR/utils/script" && ./set_performance.sh performance && ./set_prefetcher.sh off)
