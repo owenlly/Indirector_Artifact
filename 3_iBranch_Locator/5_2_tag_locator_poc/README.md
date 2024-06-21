@@ -1,4 +1,4 @@
-# iBranch Index Locator
+# iBranch Tag Locator
 
 To reproduce results of Figure 12 in the paper:
 ```
