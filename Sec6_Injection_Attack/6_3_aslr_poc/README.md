@@ -6,7 +6,7 @@ Usage: mode=run/asm [core_id=VALUE] [perf_cts=VALUE]
 ```
 
 In the PoC, we emulate the ASLR by randomizing ``PC[46:12]`` of the victim indirect branch.
-The whole process is divided into 3 steps (detail descriptions are in the paper):
+The whole process is divided into 3 steps (details described in the paper):
 1. Break ``PC[14:12]``
 2. Break ``PC[23:15]``
 3. Break ``PC[31:24]`` and enable BTB injection
