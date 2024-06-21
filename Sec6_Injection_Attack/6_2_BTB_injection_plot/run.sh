@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 mode=run/asm evict_ibp=true/false inject_btb=true/false [core_id=VALUE] [perf_cts=VALUE]"
+    echo "Usage: $0 mode=run/asm evict_ibp=true/false [inject_btb=true/false] [core_id=VALUE] [perf_cts=VALUE]"
 }
 
 if [ "$#" -lt 1 ]; then
@@ -93,10 +93,10 @@ echo "Experiment date and time: $now" > $output_file
 echo "Basic options - evict_ibp: $evict_ibp, inject_btb: $inject_btb, core_id: $core_id, perf_cts: $perf_cts, output_file: $output_file" | tee -a $output_file
 
 # Generate linker script
-sec_victim_ibranch_addr=0x4f00000
-sec_malicious_gadget_addr=0x8f00000
-sec_attacker_ibranch_addr=0x100c60c00
-sec_inject_target_addr=0x108f00000
+sec_victim_ibranch_addr=0x8000000
+sec_malicious_gadget_addr=0x4f00000
+sec_attacker_ibranch_addr=0x100850c00
+sec_inject_target_addr=0x104f00000
 link_script_file=script.ld
 ld --verbose > $link_script_file
 python3 gen_linker_script.py $link_script_file $sec_victim_ibranch_addr $sec_malicious_gadget_addr $sec_attacker_ibranch_addr $sec_inject_target_addr 
@@ -108,6 +108,7 @@ python3 PHR_maker.py attacker PHR1 384
 PMC_DIR=../../utils/src_pmc
 secret=4
 index=4
+repeat1_input=1000
 (cd $PMC_DIR && . vars.sh)
 g++ -O2 -c -m64 -oa64.o $PMC_DIR/PMCTestA.cpp
 nasm -f elf64 -o b64.o -i$PMC_DIR \
@@ -117,14 +118,17 @@ nasm -f elf64 -o b64.o -i$PMC_DIR \
     -Dsec_attacker_ibranch_addr=$sec_attacker_ibranch_addr \
     -Dindex=$index \
     -Dsecret=$secret \
+    -Drepeat1_input=$repeat1_input \
     -Ppoc_BTB_injection.nasm \
     $PMC_DIR/TemplateB64.nasm
 g++ -T $link_script_file -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
 
 if [[ "$mode" == "run" ]]; then
     echo "Performing run mode operations..."
-    echo -e "\n@@   Clock     L2Miss     BrIndir     BrMispInd" >> $output_file
+    echo -e "\n@   repeat1: $repeat1_input" >> $output_file
+    echo -e "\n@@   Clock     L2_Miss     BrIndir     BrMispInd" >> $output_file
     taskset -c $core_id ./$x_file >> $output_file
+    python3 parse.py
 else
     echo "Performing asm mode operations..."
     objdump -d ./$x_file > $output_file

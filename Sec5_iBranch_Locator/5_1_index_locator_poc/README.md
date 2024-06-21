@@ -2,7 +2,7 @@
 
 To reproduce results of Figure 11 in the paper:
 ```
-Usage: mode=run/compile [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]
+Usage: ./run_index_locator_poc.sh mode=run/compile [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]
 ```
 
 We provide a simplied method to quickly reproduce the spikes in Figure 11, by only scanning part of the IBP sets.

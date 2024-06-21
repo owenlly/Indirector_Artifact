@@ -2,7 +2,7 @@
 
 To reproduce results of Figure 12 in the paper:
 ```
-Usage: mode=run/compile [begin_pc=VALUE] [end_pc=VALUE] [core_id=VALUE] [perf_cts=VALUE]
+Usage: ./run_tag_locator_poc.sh mode=run/compile [begin_pc=VALUE] [end_pc=VALUE] [core_id=VALUE] [perf_cts=VALUE]
 ```
 
 We provide a simplied method to quickly reproduce the spikes in Figure 12, by only scanning part of the IBP tags.

