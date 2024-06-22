@@ -85,7 +85,6 @@ else
     is_lowest=0
 fi
 
-now="$(date)"
 echo "Running in mode: $mode"
 
 PMC_DIR=../../utils/src_pmc

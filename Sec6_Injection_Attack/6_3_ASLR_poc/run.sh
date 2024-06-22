@@ -69,6 +69,9 @@ pc_23to15=0
 pc_14to12=0
 pc_11to5=100
 
+now="$(date)"
+echo "Experiment start date and time: $now"
+
 g++ -O2 -c -m64 -oa.o $PMC_DIR/PMCTestA_poc.cpp
 if [[ "$mode" == "run" ]]; then
     echo "Performing run mode operations..."
@@ -175,11 +178,14 @@ if [[ "$mode" == "run" ]]; then
         
         IFS=',' read -r pc_31to24 l2_miss <<< $(python3 parse_step3.py)
         # echo "PC[31:24]: $pc_31to24, L2_Miss: $l2_miss"
-        if (( $l2_miss < 100 )); then
+        if (( $l2_miss < 99 )); then
             echo "Attacker Step 3 - PC[31:24]: $pc_31to24, L2_Miss: $l2_miss"
             break
         fi
     done
+
+    now="$(date)"
+    echo "Experiment end date and time: $now"
 else
     echo "Performing asm mode operations..."
     objdump -d ./x_step1 > $output_file

@@ -32,7 +32,7 @@ def parse_pc_23to15(file_path):
     df['PC[23:15]'] = set_ids
     df['BrClear'] = df['BrClear'].astype(int)
     grouped = df.groupby('PC[23:15]').agg({
-        'BrClear': 'mean'
+        'BrClear': 'min'
     }).reset_index()
     btb_miss_df = pd.DataFrame(grouped)
     btb_miss_df.columns = ['PC[23:15]', 'BrClear']

@@ -44,6 +44,9 @@ import subprocess
 script_name = './run.sh'
 data = []
 
+import datetime
+now = datetime.datetime.now()
+print("Begin:", now)
 for i in range(0, 400):
     command = f"{script_name} mode=run num_ibranch=10 phr_flip_bit={i}"
     try:
@@ -56,7 +59,10 @@ for i in range(0, 400):
             data.append({'phr_flip_bit': i, 'associativity': associativity})
     except subprocess.CalledProcessError as e:
         print(f"Error running script with pc_flip_bit={i}: {e.stderr}")
-    
+
+now = datetime.datetime.now()
+print("End:", now)
+
 df = pd.DataFrame(data)
 
 import matplotlib.pyplot as plt

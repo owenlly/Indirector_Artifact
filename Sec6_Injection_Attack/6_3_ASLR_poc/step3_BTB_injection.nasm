@@ -167,7 +167,7 @@ inject_t:
 SECTION .sec_attacker_evict exec
 attacker_evict:
     %assign i 0
-    %rep 1
+    %rep 2
         mov rdx, qword[UserData]
         lea r10, [attacker_target_0_%+ i]
         lea r9, [attacker_target_1_%+ i]
