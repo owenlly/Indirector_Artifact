@@ -14,7 +14,9 @@ Parsing results:
 Indirect branch misprediction rate: 100.00%
 ```
 
-On Raptor Cove, IBRS and STIBP do not flush the IBP, while IBPB flushes the IBP. 
+We test if the indirect branch can access the previous allocated IBP entries after triggering the defense.
+
+On Raptor Cove, IBRS and STIBP do not flush the IBP (0% misprediction), while IBPB flushes the IBP (100% misprediction). 
 
 ```
 sudo ./run.sh defense=IBPB

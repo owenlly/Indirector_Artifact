@@ -7,7 +7,11 @@ Usage: ./run_tag_locator_poc.sh mode=run/compile [begin_pc=VALUE] [end_pc=VALUE]
 
 We provide a simplied method to quickly reproduce the spikes in Figure 12, by only scanning part of the IBP tags.
 
-For example, to verify the spike at #218H(536), you need to first compile with the command:
+In the example, the victim uses IBP set #184 and #384, and its PC[15:6] is 0x32.
+
+Even if the attacker can locate the victim sets, it is unable to recover the entire PHR value, so it needs to brute-force its PC[15:6] to search tag aliasing.
+
+To verify the spike at attacker PC[15:6]: 0x218(536), you need to first compile with the command:
 ```
 ./run_tag_locator_poc.sh mode=compile begin_pc=530 end_pc=539
 ```
@@ -42,4 +46,4 @@ Misprediction of IBP tag 1562: 49.67%
 Misprediction of IBP tag 1563: 50.17%
 ```
 
-To verify the spike at #357H(855) is similar.
+To verify the spike at 0x357(855) is similar.
