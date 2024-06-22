@@ -10,6 +10,9 @@ In this artifact, we introduce Indirector, a collection of reverse engineering t
 
 For attack implementation, we offer *iBranch Locator*, a tool for accurately locating indirect branches within the IBP. Using this tool, we demonstrate two high-precision injection attacks on the IBP and BTB, and a method to break Address Space Layout Randomization (ASLR).
 
+## Platform Requirement
+* CPU: Golden/Raptor Cove core (P-core of Intel(R) 12th or 13th gen CPU).
+
 ## Necessary Installations
 * Install a universal version of the GNU C/C++ compiler with the command: `sudo apt-get install g++-multilib`.
 * Install the NASM assembler with the command: `sudo apt-get install nasm`.
@@ -29,9 +32,9 @@ Indirector_Artifact/
 └── utils                     # MSR drivers, test framework and necessary setup scripts
 ```
 
-In each test directory, we have provided scripts to automatically run the benchmark and parse the results.
+* In each test directory, we have provided scripts to automatically run the benchmark and parse the results.
 
-There is also a ``README`` file in each test, which shows example usage and expected results in different cases. Please refer to it for execution and further analyses.
+* There is also a ``README`` file in each test, which shows example usage and expected results in different cases. Please refer to it for execution and further analyses.
 
 
 ## Citation
