@@ -38,7 +38,6 @@ Indirector_Artifact/
 
 * There is also a ``README`` file in each test, which shows example usage and expected results in different cases. Please refer to it for execution and further analyses.
 
-
 ## Citation
 ```
 @inproceedings{Li2024Indirector,
@@ -48,3 +47,5 @@ Indirector_Artifact/
   year      = {2024}
 }
 ```
+## Acknowldgement
+This repository is built upon Anger Fog's excellent [test programs for measuring performance counters](https://agner.org/optimize/#testp).
