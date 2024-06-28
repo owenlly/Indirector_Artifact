@@ -43,6 +43,7 @@ def parse_pc_14to12(file_path):
 # %%
 step1_result_file=f"./results_step1.out"
 btb_miss_df = parse_pc_14to12(step1_result_file)
-pc_14to12 = btb_miss_df.iloc[-1]['PC[14:12]']
-br_clear = btb_miss_df.iloc[-1]['BrClear']
+max_row = btb_miss_df.loc[btb_miss_df['BrClear'].idxmax()]
+pc_14to12 = max_row['PC[14:12]']
+br_clear = max_row['BrClear']
 print(int(pc_14to12), int(br_clear), sep=',')

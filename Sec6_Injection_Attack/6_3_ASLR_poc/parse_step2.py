@@ -21,7 +21,7 @@ def parse_pc_23to15(file_path):
     for i in range(0, len(sets), 2):
         set_id = int(sets[i])
         set_data = sets[i + 1]
-        set_lines = set_data.strip().split('\n')[0:repeat0]
+        set_lines = set_data.strip().split('\n')[1:repeat0]
 
         for line in set_lines:
             if line.strip():
@@ -32,7 +32,7 @@ def parse_pc_23to15(file_path):
     df['PC[23:15]'] = set_ids
     df['BrClear'] = df['BrClear'].astype(int)
     grouped = df.groupby('PC[23:15]').agg({
-        'BrClear': 'min'
+        'BrClear': 'mean'
     }).reset_index()
     btb_miss_df = pd.DataFrame(grouped)
     btb_miss_df.columns = ['PC[23:15]', 'BrClear']
@@ -44,7 +44,8 @@ def parse_pc_23to15(file_path):
 # %%
 step2_result_file=f"./results_step2.out"
 btb_miss_df = parse_pc_23to15(step2_result_file)
-pc_23to15 = btb_miss_df.iloc[-1]['PC[23:15]']
-br_clear = btb_miss_df.iloc[-1]['BrClear']
+min_row = btb_miss_df.loc[btb_miss_df['BrClear'].idxmin()]
+pc_23to15 = min_row['PC[23:15]']
+br_clear = min_row['BrClear']
 print(int(pc_23to15), int(br_clear), sep=',')
 

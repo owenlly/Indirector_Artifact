@@ -18,8 +18,15 @@ To run it:
 
 An example of success from parsing results:
 ```
-Attacker Step 1 - PC[14:12]: 5, BrClear: 2407
-Attacker Step 2 - PC[23:15]: 86, BrClear: 34
-Attacker Step 3 - PC[31:24]: 34, L2_Miss: 83
+Attacker Step 1 - PC[14:12]: 6, BrClear: 3459
+Attacker Step 2 - PC[23:15]: 392, BrClear: 50
+Attacker Step 3 - PC[31:24]: 83, L2_Miss: 84, BTB injection succeeds!
+Attack succeeds! PC[31:12] of victim branch is 0x53C46!
 ```
 
+An example of failure from parsing results:
+```
+Attacker Step 1 - PC[14:12]: 6, BrClear: 3459
+Attacker Step 2 - PC[23:15]: 392, BrClear: 50
+Attack fails...
+```
