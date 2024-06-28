@@ -39,7 +39,7 @@ do
     -Ppoc_victim.nasm \
     $PMC_DIR/TemplateB64.nasm
 
-  g++ -T $link_script_file -no-pie -flto -m64 $PMC_DIR/PMCTestA_poc.cpp b64_victim.o -o x_victim -lpthread -lrt
+  g++ -T $link_script_file -z noexecstack -no-pie -flto -m64 $PMC_DIR/PMCTestA_poc.cpp b64_victim.o -o x_victim -lpthread -lrt
 
   # Run the victim on core No.$coreID
   taskset -c $coreID ./x_victim >> $output_file

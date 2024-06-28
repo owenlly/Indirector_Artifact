@@ -132,7 +132,7 @@ nasm -f elf64 -o b64.o -i$PMC_DIR \
     -Drepeat1_input=$repeat1_input \
     -PBTB_branch_type.nasm \
     $PMC_DIR/TemplateB64.nasm
-g++ -T $link_script_file -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
+g++ -T $link_script_file -z noexecstack -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
 
 if [[ "$mode" == "run" ]]; then
     echo "Performing run mode operations..."

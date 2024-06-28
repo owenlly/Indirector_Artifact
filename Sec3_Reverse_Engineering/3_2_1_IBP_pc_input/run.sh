@@ -78,7 +78,7 @@ nasm -f elf64 -o b64.o -i$PMC_DIR \
     -Dpc_flip_bit=$pc_flip_bit \
     -PIBP_PC_input.nasm \
     $PMC_DIR/TemplateB64.nasm
-g++ -T $link_script_file -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
+g++ -T $link_script_file -z noexecstack -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
 
 if [[ "$mode" == "run" ]]; then
     echo "Performing run mode operations..."

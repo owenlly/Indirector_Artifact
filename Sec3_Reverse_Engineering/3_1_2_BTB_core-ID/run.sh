@@ -102,7 +102,7 @@ nasm -f elf64 -o b64.o -i$PMC_DIR \
     -Dassign_cross=$assign_cross \
     -PBTB_core_id_xthread.nasm \
     $PMC_DIR/TemplateB64_smt.nasm
-g++ -T $link_script_file -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
+g++ -T $link_script_file -z noexecstack -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread
 
 if [[ "$mode" == "run" ]]; then
     echo "Performing run mode operations..."

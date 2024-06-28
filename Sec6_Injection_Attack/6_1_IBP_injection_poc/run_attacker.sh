@@ -29,7 +29,7 @@ nasm -f elf64 -o b64_attacker.o -i$PMC_DIR \
   -Dpc_15_to_6_1=$pc_15_to_6_1 \
   -Ppoc_attacker.nasm \
   $PMC_DIR/TemplateB64_infinite.nasm
-g++ -T $link_script_file -no-pie -flto -m64 $PMC_DIR/PMCTestA.cpp b64_attacker.o -o x_attacker -lpthread -lrt
+g++ -T $link_script_file -z noexecstack -no-pie -flto -m64 $PMC_DIR/PMCTestA.cpp b64_attacker.o -o x_attacker -lpthread -lrt
 
 # Run the attacker on core No.$coreID
 echo "Running the attacker on Core No.$coreID..."

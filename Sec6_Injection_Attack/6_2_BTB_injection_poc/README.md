@@ -5,7 +5,7 @@
 * A success example when both processes run on the same SMT core:
 
     ```
-    xyz@xyz-home:~/IBP_attack_poc/poc_code/injection_BTB$ make
+    xyz@xyz-home:~/Indirector_Artifact/Sec6_Injection_Attack/6_2_BTB_injection_poc$ make
     Assign a core-ID for the attacker ( 0 ~ (2*num of P-cores)-1 ): 0
     Running the attacker on Core No.0...
     Assign a core-ID for the victim ( 0 ~ (2*num of P-cores)-1 ): 0
@@ -16,7 +16,7 @@
 
 * The attack fails when they run on different cores:
     ```
-    xyz@xyz-home:~/IBP_attack_poc/poc_code/injection_BTB$ make
+    xyz@xyz-home:~/Indirector_Artifact/Sec6_Injection_Attack/6_2_BTB_injection_poc$ make
     Assign a core-ID for the attacker ( 0 ~ (2*num of P-cores)-1 ): 0
     Running the attacker on Core No.0...
     Assign a core-ID for the victim ( 0 ~ (2*num of P-cores)-1 ): 1
