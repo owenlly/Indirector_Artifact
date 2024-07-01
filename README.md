@@ -14,10 +14,17 @@ For attack implementation, we offer *iBranch Locator*, a tool for accurately loc
 
 ## Platform Requirement
 * CPU: Golden/Raptor Cove core (P-core of Intel(R) 12th or 13th gen CPU).
+* OS: Ubuntu-based Linux system.
+
+**The environments we used in our paper are:**
+* i9-12900 running Ubuntu 22.04.4 LTS with Linux kernel 5.10.209
+* i7-13700K running Ubuntu 20.04.6 LTS with Linux kernel 5.15.89
+* i9-13900KS running Ubuntu 22.04.4 LTS with Linux kernel 6.5.0-35-generic
 
 ## Necessary Installations
-* Install a universal version of the GNU C/C++ compiler with the command: `sudo apt-get install g++-multilib`.
-* Install the NASM assembler with the command: `sudo apt-get install nasm`.
+* Install a universal version of the GNU C/C++ compiler: `sudo apt-get install g++-multilib`.
+* Install the NASM assembler: `sudo apt-get install nasm`.
+* Install the msr-tools: `sudo apt-get install msr-tools`
 * Disable secure boot in the BIOS/UEFI setup menu.
 
 ## Install Dependencies
