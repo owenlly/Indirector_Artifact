@@ -1,5 +1,7 @@
 # Branch Type in BTB
 
+Resources needed: 1 human-minute + 1 compute-minute + 30MB disk
+
 To reproduce results of Section 3.1.1 in the paper:
 ```
 Usage: ./run.sh mode=run/asm inject_branch=direct/indirect/none measure=data/target_correct/target_malicious [core_id=VALUE] [perf_cts=VALUE]
