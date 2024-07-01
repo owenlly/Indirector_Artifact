@@ -34,16 +34,22 @@ For attack implementation, we offer *iBranch Locator*, a tool for accurately loc
 ```
 Indirector_Artifact/
 ├── 0_Template                # Basic test to verify installation
-├── Sec3_Reverse_Engineering  # Benchmarks for reverse engieering BTB and IBP in Section 3 (~ 10 human-minutes + 70 compute-minutes)
-├── Sec4_Intel_Defense        # Benchmarks for reverse engieering Intel Spectre v2 defenses in Section 4 (~ 2 human-minutes + 2 compute-minutes)
-├── Sec5_iBranch_Locator      # Proof-of-concept for iBranch Locator in Section 5 (~ 3 human-minutes + 5 compute-minutes)
-├── Sec6_Injection_Attack     # Proof-of-concept for cross-process injection and breaking ASLR in Section 6 (~ 3 human-minutes + 35 compute-minutes)
+├── Sec3_Reverse_Engineering  # Benchmarks for reverse engieering BTB and IBP in Section 3
+├── Sec4_Intel_Defense        # Benchmarks for reverse engieering Intel Spectre v2 defenses in Section 4 
+├── Sec5_iBranch_Locator      # Proof-of-concept for iBranch Locator in Section 5
+├── Sec6_Injection_Attack     # Proof-of-concept for cross-process injection and breaking ASLR in Section 6
 └── utils                     # MSR drivers, test framework and necessary setup scripts
 ```
 
+* Resources needed:
+  * **Section 3 (Reverse Engineering):** ~ 10 human-minutes + 70 compute-minutes
+  * **Section 4 (Intel Defense):** ~ 2 human-minutes + 2 compute-minutes
+  * **Section 5 (iBranch Locator):** ~ 3 human-minutes + 5 compute-minutes
+  * **Section 6 (Attack PoC):** ~ 3 human-minutes + 35 compute-minutes
+
 * In each test directory, we have provided scripts to automatically run the benchmark and parse the results.
 
-* There is also a ``README`` file in each test, which shows estimated time needed, example usage and expected results in different cases. Please refer to it for execution and further analyses.
+* There is also a ``README`` file in each test, which shows estimated resources needed, example usage and expected results in different cases. Please refer to it for execution and further analyses.
 
 ## Citation
 ```
