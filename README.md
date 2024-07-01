@@ -43,7 +43,7 @@ Indirector_Artifact/
 
 * In each test directory, we have provided scripts to automatically run the benchmark and parse the results.
 
-* There is also a ``README`` file in each test, which shows example estimated time needed, basic usage and expected results in different cases. Please refer to it for execution and further analyses.
+* There is also a ``README`` file in each test, which shows estimated time needed, example usage and expected results in different cases. Please refer to it for execution and further analyses.
 
 ## Citation
 ```
