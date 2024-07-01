@@ -1,5 +1,7 @@
 # BTB Injection
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Figure 13 in the paper:
 ```
 Usage: ./run.sh mode=run/asm evict_ibp=true/false [inject_btb=true/false] [core_id=VALUE] [perf_cts=VALUE]

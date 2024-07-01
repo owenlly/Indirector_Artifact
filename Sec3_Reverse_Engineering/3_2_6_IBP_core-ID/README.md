@@ -1,5 +1,7 @@
 # Core-ID in IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 3.2.6 in the paper:
 ```
 Usage: ./run.sh mode=run/asm core_assign=cross/same [perf_cts=VALUE]

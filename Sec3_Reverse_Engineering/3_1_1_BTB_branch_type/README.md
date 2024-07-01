@@ -1,6 +1,6 @@
 # Branch Type in BTB
 
-Resources needed: 1 human-minute + 1 compute-minute + 30MB disk
+Resources needed: 1 human-minute + 1 compute-minute
 
 To reproduce results of Section 3.1.1 in the paper:
 ```

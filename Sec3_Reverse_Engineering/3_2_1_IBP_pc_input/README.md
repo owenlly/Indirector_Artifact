@@ -1,5 +1,7 @@
 # PC Input of IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 3.2.1 in the paper:
 ```
 Usage: ./run.sh mode=run/asm pc_flip_bit=VALUE [core_id=VALUE] [perf_cts=VALUE]

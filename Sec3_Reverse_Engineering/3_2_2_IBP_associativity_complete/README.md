@@ -1,5 +1,7 @@
 # TAGE-like Structure of IBP
 
+Resources needed: 1 human-minute + 60 compute-minutes
+
 To reproduce results of Section 3.2.2 in the paper:
 ```
 Usage: ./run.sh mode=run/asm num_ibranch=VALUE phr_flip_bit=VALUE [core_id=VALUE] [perf_cts=VALUE]

@@ -1,5 +1,7 @@
 # iBranch Tag Locator
 
+Resources needed: 1 human-minute + 2 compute-minutes
+
 To reproduce results of Figure 12 in the paper:
 ```
 Usage: ./run_tag_locator_poc.sh mode=run/compile [begin_pc=VALUE] [end_pc=VALUE] [core_id=VALUE] [perf_cts=VALUE]

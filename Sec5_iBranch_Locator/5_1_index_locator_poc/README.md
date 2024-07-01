@@ -1,5 +1,7 @@
 # iBranch Index Locator
 
+Resources needed: 1 human-minute + 2 compute-minutes
+
 To reproduce results of Figure 11 in the paper:
 ```
 Usage: ./run_index_locator_poc.sh mode=run/compile [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]

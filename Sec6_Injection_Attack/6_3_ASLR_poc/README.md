@@ -1,5 +1,7 @@
 # Breaking ASLR and Enable BTB Injection
 
+Resources needed: 1 human-minute + 30 compute-minutes
+
 To reproduce results of Section 6.3 in the paper:
 ```
 Usage: mode=run/asm [core_id=VALUE] [perf_cts=VALUE]

@@ -1,5 +1,7 @@
 # Intel Defense Impacts on IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 4 (Table 3) in the paper:
 ```
 Usage: sudo ./run.sh mode=run/asm defense=IBRS/STIBP/IBPB [core_id=VALUE] [perf_cts=VALUE]
