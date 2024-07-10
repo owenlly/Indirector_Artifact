@@ -24,16 +24,16 @@ After compilation, run with:
 An example of parsing results:
 ```
 Parsing results:
-Misprediction in IBP set 180: 30.36%
-Misprediction in IBP set 181: 29.59%
-Misprediction in IBP set 182: 28.72%
-Misprediction in IBP set 183: 29.79%
-Misprediction in IBP set 184: 47.11% // Much higher than others
-Misprediction in IBP set 185: 29.68%
-Misprediction in IBP set 186: 29.17%
-Misprediction in IBP set 187: 28.25%
-Misprediction in IBP set 188: 28.34%
-Misprediction in IBP set 189: 23.71%
+Misprediction in IBP set 180: 0.10%
+Misprediction in IBP set 181: 0.13%
+Misprediction in IBP set 182: 0.08%
+Misprediction in IBP set 183: 0.12%
+Misprediction in IBP set 184: 30.64% // Much higher than others
+Misprediction in IBP set 185: 0.16%
+Misprediction in IBP set 186: 0.09%
+Misprediction in IBP set 187: 0.12%
+Misprediction in IBP set 188: 0.14%
+Misprediction in IBP set 189: 0.17%
 ```
 
 To verify the spike at #384 is similar:
