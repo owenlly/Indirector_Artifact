@@ -34,4 +34,11 @@ Misprediction in IBP set 188: 28.34%
 Misprediction in IBP set 189: 23.71%
 ```
 
-To verify the spike at #384 is similar.
+To verify the spike at #384 is similar:
+```
+./run_index_locator_poc.sh mode=compile begin_set=380 end_set=389
+```
+
+```
+./run_index_locator_poc.sh mode=run begin_set=380 end_set=389
+```

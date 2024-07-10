@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 mode=run/compile [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]"
+    echo "Usage: $0 mode=run/compile [num_locator_branch=VALUE] [begin_set=VALUE] [end_set=VALUE] [core_id=VALUE] [perf_cts=VALUE]"
 }
 
 if [ "$#" -lt 1 ]; then
@@ -15,6 +15,7 @@ core_id=0
 perf_cts=205,206
 begin_set=0
 end_set=511
+num_locator_branch=1
 
 for arg in "$@"; do
     key=$(echo $arg | cut -f1 -d=)
@@ -28,6 +29,9 @@ for arg in "$@"; do
                 usage
                 exit 1
             fi
+            ;;
+        num_locator_branch)
+            num_locator_branch=$value
             ;;
         begin_set)
             begin_set=$value
@@ -82,6 +86,7 @@ elif [[ "$mode" == "compile" ]]; then
         nasm -f elf64 -o b64_index_locator.o -i$PMC_DIR \
             -Dcounters=$perf_cts \
             -Drepeat0_input=$repeat0_input \
+            -Dnum_locator_branch=$num_locator_branch \
             -Pindex_locator_poc.nasm \
             $PMC_DIR/TemplateB64.nasm
         g++ -no-pie -flto -m64 a64_index_locator.o b64_index_locator.o \

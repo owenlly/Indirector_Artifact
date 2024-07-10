@@ -78,7 +78,7 @@ retry_random_attacker:
 SECTION .sec_attacker_ibranch exec
 attacker_ibranch:    
     %assign i 0
-    %rep 3
+    %rep num_locator_branch
         mov rdx, qword[UserData+8]
         lea r10, [attacker_target_0_%+ i]
         lea r9, [attacker_target_1_%+ i]

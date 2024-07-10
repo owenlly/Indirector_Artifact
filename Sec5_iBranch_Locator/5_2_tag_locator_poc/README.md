@@ -46,4 +46,10 @@ Misprediction of IBP tag 1562: 49.67%
 Misprediction of IBP tag 1563: 50.17%
 ```
 
-To verify the spike at 0x357(855) is similar.
+To verify the spike at 0x357(855) is similar:
+```
+./run_tag_locator_poc.sh mode=compile begin_pc=850 end_pc=859
+```
+```
+./run_tag_locator_poc.sh mode=run begin_pc=850 end_pc=859
+```

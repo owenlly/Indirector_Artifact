@@ -16,7 +16,7 @@ def main():
         return
 
     if (person == "attacker"):
-        BRANCH_NUM = 33
+        BRANCH_NUM = 65
         base = 16
     if (person == "victim"):
         BRANCH_NUM = 65
