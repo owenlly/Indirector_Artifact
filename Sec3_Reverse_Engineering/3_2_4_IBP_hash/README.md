@@ -1,5 +1,7 @@
 # Hash Function of IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 We designed a tool for automatically verifying the correctness of IBP index and tag hash function in Figure 8 and 9.
 
 Based on the input of victim PHR and ``PC[15:6]``, the tool will find a possible PHR value and a corresponding ``PC[15:6]`` for the attacker to create IBP aliasing with the victim.

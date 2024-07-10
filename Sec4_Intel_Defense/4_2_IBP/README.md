@@ -1,5 +1,7 @@
 # Intel Defense Impacts on IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 4 (Table 3) in the paper:
 ```
 Usage: sudo ./run.sh mode=run/asm defense=IBRS/STIBP/IBPB [core_id=VALUE] [perf_cts=VALUE]
@@ -19,7 +21,7 @@ We test if the indirect branch can access the previous allocated IBP entries aft
 On Raptor Cove, IBRS and STIBP do not flush the IBP (0% misprediction), while IBPB flushes the IBP (100% misprediction). 
 
 ```
-sudo ./run.sh defense=IBPB
+sudo ./run.sh mode=run defense=IBPB
 ```
 **Expected output:** ~100% misprediction
 

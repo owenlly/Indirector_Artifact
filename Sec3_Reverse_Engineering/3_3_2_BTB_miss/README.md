@@ -1,5 +1,7 @@
 # BTB Miss + IBP Hit/Miss in IBP
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 3.3 (Table 2) in the paper:
 ```
 Usage: ./run.sh mode=run/asm evict_ibp=true/false measure=branch/data/next_inst [core_id=VALUE] [perf_cts=VALUE]

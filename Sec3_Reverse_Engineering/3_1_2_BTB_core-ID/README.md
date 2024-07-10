@@ -1,5 +1,7 @@
 # Core-ID in BTB
 
+Resources needed: 1 human-minute + 1 compute-minute
+
 To reproduce results of Section 3.1.2 in the paper:
 ```
 Usage: ./run.sh mode=run/asm t0_branch_num=VALUE core_assign=cross/same [perf_cts=VALUE]
