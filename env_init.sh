@@ -11,4 +11,4 @@ sudo modprobe msr
 (cd "$ROOT_DIR/utils/script" && ./set_performance.sh performance && ./set_prefetcher.sh off && ./set_smt.sh on && ./set_aslr.sh off)
 
 KERNELDIR=/lib/modules/`uname -r`
-echo "Kernel module MSRdrv is permanently installed in $KERNELDIR/extra!"
+echo "Kernel module MSRdrv is permanently installed in $KERNELDIR/extra! Use ./utils/src_driver/uninstall.sh to uninstall it."
