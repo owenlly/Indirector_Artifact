@@ -20,10 +20,12 @@ To run it:
 
 An example of success from parsing results:
 ```
-Attacker Step 1 - PC[14:12]: 6, BrClear: 3459
-Attacker Step 2 - PC[23:15]: 392, BrClear: 50
-Attacker Step 3 - PC[31:24]: 83, L2_Miss: 84, BTB injection succeeds!
-Attack succeeds! PC[31:12] of victim branch is 0x53C46!
+Attacker Step 1 - PC[14:12]: 4, BrClear: 2290
+Attacker Step 2 - PC[23:15]: 218, BrClear: 17
+Attacker Step 3 - PC[31:24]: 52, L2_Miss: 73, BTB injection succeeds!
+Attack succeeds! PC[31:12] of victim branch is 0x346D4!
+Total compile time: 1051.975 sec
+Total exec time: 4.172 sec
 ```
 
 An example of failure from parsing results:
