@@ -118,8 +118,8 @@ if [[ "$mode" == "run" ]]; then
 
     IFS=',' read -r pc_14to12 br_clear <<< $(python3 parse_step1.py)
     echo "Attacker Step 1 - PC[14:12]: $pc_14to12, BrClear: $br_clear"
-    echo "Total compile time: $total_compile_time sec"
-    echo "Total exec time: $total_exec_time sec"
+    # echo "Total compile time: $total_compile_time sec"
+    # echo "Total exec time: $total_exec_time sec"
 
     ## Step 2: Extract BTB tag
     output_file=results_step2.out
@@ -162,8 +162,8 @@ if [[ "$mode" == "run" ]]; then
 
     IFS=',' read -r pc_23to15 br_clear <<< $(python3 parse_step2.py)
     echo "Attacker Step 2 - PC[23:15]: $pc_23to15, BrClear: $br_clear"
-    echo "Total compile time: $total_compile_time sec"
-    echo "Total exec time: $total_exec_time sec"
+    # echo "Total compile time: $total_compile_time sec"
+    # echo "Total exec time: $total_exec_time sec"
 
     ## Step 3: Inject BTB
     python3 PHR_maker.py attacker PHR0 184
