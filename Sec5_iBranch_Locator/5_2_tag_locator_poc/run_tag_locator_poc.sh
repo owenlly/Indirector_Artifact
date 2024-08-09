@@ -59,24 +59,31 @@ output_file=results.out
 g++ -O2 -c -m64 -oa64_tag_locator.o $PMC_DIR/PMCTestA_poc.cpp
 
 if [[ "$mode" == "run" ]]; then
+    total_exec_time=0
     echo "Performing run mode operations..." 
     echo -e "\n@   repeat0: $repeat0_input" > $output_file
     echo -e "\n@@   Clock     BrIndir     BrMispInd" >> $output_file
-    for (( i=0; i<2; ++i ))
+    for (( i=0; i<1; ++i ))
     do
         for (( j=$begin_pc; j<=$end_pc; ++j ))
         do  
             index=$(($i * 1024 + $j))
             echo -e "@@@-------Tag #$index-------\n" >> $output_file
+            start_time=$(date +%s%N)
             taskset -c $core_id ./x_files/x_tag_locator_$index >> $output_file
+            end_time=$(date +%s%N)
+            elapsed=$((end_time - start_time))
+            elapsed_sec=$(echo "scale=3; $elapsed / 1000000000" | bc)
+            total_exec_time=$(echo "scale=3; $total_exec_time + $elapsed_sec" | bc)
         done
     done
     python3 parse.py
+    echo "Total exec time: $total_exec_time sec"
 elif [[ "$mode" == "compile" ]]; then
     mkdir -p ./x_files
     python3 PHR_maker.py victim PHR0 $victim_set0
     python3 PHR_maker.py victim PHR1 $victim_set1
-    for (( i=0; i<2; ++i ))
+    for (( i=0; i<1; ++i ))
     do
         if [[ $i -eq 1 ]]; then
             flipped_set0=$(($victim_set0 ^ 1026))

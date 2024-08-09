@@ -34,7 +34,7 @@ close_msr_file:
     %endif
 
     %if stibp==1
-        COMMAND_STIBP 1
+        COMMAND_STIBP 2
     %endif
 
     %if ibpb==1

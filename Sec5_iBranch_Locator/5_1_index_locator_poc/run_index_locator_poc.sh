@@ -55,21 +55,28 @@ for arg in "$@"; do
 done
 
 PMC_DIR=../../utils/src_pmc
-repeat0_input=10
+repeat0_input=3
 output_file=results.out
 (cd $PMC_DIR && . vars.sh)
 g++ -O2 -c -m64 -oa64_index_locator.o $PMC_DIR/PMCTestA_poc.cpp
 
 if [[ "$mode" == "run" ]]; then
+    total_exec_time=0
     echo "Performing run mode operations..." 
     echo -e "\n@   repeat0: $repeat0_input" > $output_file
     echo -e "\n@@   Clock     BrIndir     BrMispInd" >> $output_file
     for (( i=$begin_set; i<=$end_set; ++i ))
     do  
         echo -e "@@@-------IBP set #$i-------\n" >> $output_file
+        start_time=$(date +%s%N)
         taskset -c $core_id ./x_files/x_index_locator_$i >> $output_file
+        end_time=$(date +%s%N)
+        elapsed=$((end_time - start_time))
+        elapsed_sec=$(echo "scale=3; $elapsed / 1000000000" | bc)
+        total_exec_time=$(echo "scale=3; $total_exec_time + $elapsed_sec" | bc)
     done
     python3 parse.py
+    echo "Total exec time: $total_exec_time sec"
 elif [[ "$mode" == "compile" ]]; then
     mkdir -p ./x_files
     python3 PHR_maker.py victim PHR0 184

@@ -5,7 +5,7 @@
 
 %define nthreads 1
 %define repeat0  repeat0_input              ; Number of repetitions of whole test. Default = 8
-%define repeat1  300              ; Repeat count for loop around testcode. Default = no loop
+%define repeat1  50              ; Repeat count for loop around testcode. Default = no loop
 %define repeat2  1              ; Repeat count for repeat macro around testcode. Default = 100
 %define noptype  2
 
