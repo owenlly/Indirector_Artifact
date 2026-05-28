@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-    echo "Usage: $0 mode=run/asm defense=IBRS/STIBP/IBPB [core_id=VALUE] [perf_cts=VALUE]"
+    echo "Usage: $0 mode=run/asm [defense=IBRS/STIBP/IBPB/IPRED_DIS_U] [core_id=VALUE] [perf_cts=VALUE]"
 }
 
 if [ "$#" -lt 1 ]; then
@@ -21,10 +21,10 @@ for arg in "$@"; do
 
     case $key in
         defense)
-            if [[ "$value" == "IBRS" || "$value" == "STIBP" || "$value" == "IBPB" ]]; then
+            if [[ "$value" == "IBRS" || "$value" == "STIBP" || "$value" == "IBPB" || "$value" == "IPRED_DIS_U" ]]; then
                 defense=$value
             else
-                echo "Error: mode must be one of 'IBRS', 'STIBP', or 'IBPB'."
+                echo "Error: mode must be one of 'IBRS', 'STIBP', 'IBPB', or 'IPRED_DIS_U'."
                 usage
                 exit 1
             fi
@@ -67,14 +67,27 @@ if [[ "$defense" == "IBRS" ]]; then
     ibrs=1
     stibp=0
     ibpb=0
+    ipred_dis_u=0
 elif [[ "$defense" == "STIBP" ]]; then
     ibrs=0
     stibp=1
     ibpb=0
-else
+    ipred_dis_u=0
+elif [[ "$defense" == "IBPB" ]]; then
     ibrs=0
     stibp=0
     ibpb=1
+    ipred_dis_u=0
+elif [[ "$defense" == "IPRED_DIS_U" ]]; then
+    ibrs=0
+    stibp=0
+    ibpb=0
+    ipred_dis_u=1
+else
+    ibrs=0
+    stibp=0
+    ibpb=0
+    ipred_dis_u=0
 fi
 
 now="$(date)"
@@ -90,6 +103,7 @@ nasm -f elf64 -o b64.o -i$PMC_DIR \
     -Dibrs=$ibrs \
     -Dstibp=$stibp \
     -Dibpb=$ibpb \
+    -Dipred_dis_u=$ipred_dis_u \
     -Pdefense_test_IBP.nasm \
     $PMC_DIR/TemplateB64.nasm
 g++ -no-pie -flto -m64 a64.o b64.o -o$x_file -lpthread

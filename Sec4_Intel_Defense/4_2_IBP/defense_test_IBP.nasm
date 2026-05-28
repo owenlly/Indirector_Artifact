@@ -52,6 +52,10 @@ close_msr_file:
         COMMAND_IBPB 1
     %endif
 
+    %if ipred_dis_u==1
+        COMMAND_IPRED_DIS_U 1
+    %endif
+
     mfence
     SERIALIZE
 
@@ -82,6 +86,16 @@ close_msr_file:
     mov rsi, syscall_input          ; Second argument: pointer to data
     mov rdx, 8             ; Third argument: count (number of bytes to write)
     mov r10, 73            ; Fourth argument: offset
+    mov rax, syscall_pwrite
+    syscall
+%endmacro
+
+%macro COMMAND_IPRED_DIS_U 1
+    mov dword[syscall_input], %1 ; bit 3 is IPRED_DIS_U and bit 4 is IPRED_DIS_S
+    mov rdi, [UserData]    ; First argument: file descriptor
+    mov rsi, syscall_input          ; Second argument: pointer to data
+    mov rdx, 8             ; Third argument: count (number of bytes to write)
+    mov r10, 72            ; Fourth argument: offset
     mov rax, syscall_pwrite
     syscall
 %endmacro
