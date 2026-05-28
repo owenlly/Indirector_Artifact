@@ -53,7 +53,7 @@ close_msr_file:
     %endif
 
     %if ipred_dis_u==1
-        COMMAND_IPRED_DIS_U 1
+        COMMAND_IPRED_DIS_U 8
     %endif
 
     mfence
@@ -77,6 +77,11 @@ close_msr_file:
     %rep 512
      nop
     %endrep
+
+    ; since this is a mode, let's turn it back on!
+    %if ipred_dis_u==1
+        COMMAND_IPRED_DIS_U 0
+    %endif
 
 %endmacro
 
